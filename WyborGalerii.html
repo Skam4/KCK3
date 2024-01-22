@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyYqB8F/uUGlQ6UJ/6Z/hRTt8+pR6L4N2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <style>
+        body {
+            background-image: url(photos/Tlo.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+            transform: translateY(0);
+            transition: transform 1s ease;
+            margin: 0em;
+        }
+
+        body.opadanie {
+            transform: translateY(20px);
+        }
+
+        .wrapper {
+            max-width: 60em;
+            min-height: 20em;
+            text-align: center;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
+            margin: 0em auto 0;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1em;
+        }
+
+
+        .header {
+            background-image: linear-gradient(to left, #553c9a, #b393d3);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .profile-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .profile-info > div {
+            margin-right: 2em;
+            align-self: flex-start; /* Ustawienie od góry do dołu */
+            margin-top: 10px; /* Dodaj to, aby obniżyć ten div */
+        }
+
+        .imgProfilowe {
+            border-radius: 50%;
+            max-width: 50%;
+            height: auto;
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .imgProfilowe:hover {
+            transform: scale(1.1);
+            filter: brightness(105%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        .profile-name {
+            font-size: 1.5em;
+        }
+
+        .logo {
+            font-size: 3em;
+            width: 150%;
+            height: auto;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-top: 1em;
+        }
+
+        .image-container {
+            text-align: center;
+            position: relative;
+        }
+
+        .gallery-image {
+        max-width: 10em;
+        height: auto;
+        border-radius: 10px;
+        margin-left: 1em;
+        margin-right: 1em;
+        transition: transform 0.3s, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+
+        .gallery-image:hover {
+            transform: scale(1.1);
+            filter: brightness(105%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        .image-overlay {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+        .image-overlay p {
+            color: black;
+            font-size: 2em;
+            margin-bottom: 1em;
+        }
+
+
+        .image-container:hover .image-overlay {
+            opacity: 1;
+        }
+    </style>
+        
+        <header class="header2" style="margin-bottom: 2em;">
+            <div class="header-buttons2">
+                <button class="button2" onclick="goBack()">Powrót do menu</button>
+                <button class="button2" onclick="logout()">Wyloguj</button>
+            </div>
+        </header>
+    
+        <script>
+            window.onload = function () {
+                document.body.classList.add('opadanie');
+            };
+    
+            function goBack() {
+                window.location.href = 'WyborGalerii.html';
+            }
+    
+            function logout() {
+                window.location.href = 'Logowanie.html';
+            }
+        </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="profile-info">
+                <div>
+                    <img src="photos/user.png" alt="Profile Image" class="imgProfilowe" onclick="redirectToProfile()" id="profileImage">
+                    <h1 class="profile-name">Nazwa Profilu</h1>
+                </div>
+                <div class="logo">
+                    <h4>Wybierz galerię jaką chcesz przejrzeć</h4>
+                </div>
+            </div>
+        </header>
+
+        <div class="image-container">
+
+            <div class="image-overlay">
+                <p style="color:black ; font-size: 2em"></p>
+            </div>
+
+            <a href="html/Rzezba/RzezbaArtysci.html">
+                <img src="photos/galeria1.png" alt="Galeria 1" data-title="Galeria Rzeźb" class="gallery-image">
+            </a>
+            <a href="html/Fotografia/FotografiaArtysci.html">
+                <img src="photos/galeria2.png" alt="Galeria 2" data-title="Galeria Fotografii" class="gallery-image">
+            </a>
+            <a href="html/Instalacja/InstalacjaArtysci.html">
+                <img src="photos/galeria33.png" alt="Galeria 3" data-title="Galeria Instalacji" class="gallery-image">
+            </a>
+            <a href="html/Obraz/ObrazArtysci.html">
+                <img src="photos/galeria4.png" alt="Galeria 4" data-title="Galeria Obrazów" class="gallery-image">
+            </a>
+
+        </div>
+
+    <script>
+        window.onload = function () {
+            document.body.classList.add('opadanie');
+
+            var images = document.querySelectorAll('.gallery-image');
+            var overlay = document.querySelector('.image-overlay p');
+
+            images.forEach(function (image) {
+                image.addEventListener('mouseover', function (event) {
+                    if (event.target === image) {
+                        var title = image.getAttribute('data-title');
+                        overlay.textContent = title;
+                    }
+                });
+
+                image.addEventListener('mouseout', function () {
+                    overlay.style.transition = 'opacity 0.3s ease-in-out';
+                    overlay.style.opacity = 0;
+
+                    setTimeout(function () {
+                        overlay.style.transition = 'none';
+                        overlay.style.opacity = 1;
+                    }, 300);
+                });
+
+                image.addEventListener('click', function () {
+                    var destination = image.parentElement.getAttribute('href');
+                    window.location.href = destination;
+                });
+            });
+        };
+
+        function redirectToProfile() {
+                window.location.href = 'Profil.html';
+            }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyYqB8F/uUGlQ6UJ/6Z/hRTt8+pR6L4N2" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <style>
+        body {
+            background-image: url(photos/Tlo.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+            transform: translateY(0);
+            transition: transform 1s ease;
+            margin: 0;
+        }
+
+        body.opadanie {
+            transform: translateY(20px);
+        }
+
+        .wrapper {
+            max-width: 60em;
+            min-height: 40em;
+            text-align: center;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .header {
+            background-image: linear-gradient(to left, #553c9a, #b393d3);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .imgProfilowe {
+            border-radius: 50%;
+            max-width: 50%;
+            height: 10em;
+            margin-bottom: 1em;
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .imgProfilowe:hover {
+            transform: scale(1.1);
+            filter: brightness(85%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        .profile-name {
+            font-size: 1.5em;
+        }
+
+        .logo {
+            font-size: 3em;
+            width: 150%;
+            height: auto;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-top: 1em;
+        }
+
+        .image-container {
+            text-align: center;
+            position: relative;
+            margin-top: 2em;
+        }
+
+        .gallery-image {
+            max-width: 10em;
+            height: auto;
+            border-radius: 10px;
+            margin-left: 1em;
+            margin-right: 1em;
+            transition: transform 0.3s, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.1);
+            filter: brightness(105%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        .image-overlay {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            background-color: rgba(255, 255, 255, 0.7);
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+        }
+
+        .image-overlay p {
+            color: black;
+            font-size: 3em;
+            margin-bottom: 1em;
+        }
+
+        .profile-artworks {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 2em;
+        }
+
+        .artwork-card {
+            max-width: 15em;
+            margin: 1em;
+            text-align: center;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .artwork-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .artwork-info {
+            padding: 1em;
+        }
+
+        .artwork-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .artwork-author {
+            color: #888;
+            font-size: 1em;
+        }
+
+        .change-password-button {
+            background-color: #553c9a;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .change-password-button:hover {
+            background-color: #b393d3;
+        }
+    </style>
+
+    <header class="header2" style="margin-bottom: 2em;">
+        <div class="header-buttons2">
+            <button class="button2" onclick="goBack()">Powrót do menu</button>
+            <button class="button2" onclick="logout()">Wyloguj</button>
+        </div>
+    </header>
+
+    <script>
+        window.onload = function () {
+            document.body.classList.add('opadanie');
+        };
+
+        function goBack() {
+            window.location.href = 'WyborGalerii.html';
+        }
+
+        function logout() {
+            window.location.href = 'Logowanie.html';
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="profile-info">
+                <img src="photos/user.png" alt="Profile Image" class="imgProfilowe" id="profileImage" onmouseover="changeProfileImage('photos/aparat.png')" onmouseout="restoreProfileImage()">
+                <h1 class="profile-name">Nazwa Profilu</h1>
+                <button class="change-password-button" onclick="location.href='ZmianaHasla.html'">Zmień Hasło</button>
+                <button class="change-password-button" onclick="location.href='Ustawienia.html'">Ustawienia</button>
+                <button class="change-password-button" onclick="location.href='Kontakt.html'">Kontakt</button>
+            </div>
+        </header>
+
+        <div class="image-container">
+            <h1>Twoje ulubione dzieła:</h1>
+        </div>
+
+        <div class="profile-artworks">
+            <div class="artwork-card">
+                <img src="photos/Sherman6.jpg" alt="Artwork 1" class="artwork-image">
+                <div class="artwork-info">
+                    <h3 class="artwork-title">Dzieło Sztuki 1</h3>
+                    <p class="artwork-author">Autor: Artysta 1</p>
+                </div>
+            </div>
+            <div class="artwork-card">
+                <img src="photos/Sherman4.jpg" alt="Artwork 2" class="artwork-image">
+                <div class="artwork-info">
+                    <h3 class="artwork-title" style="text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);">Dzieło Sztuki 2</h3>
+                    <p class="artwork-author" style="text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);">Autor: Artysta 2</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeProfileImage(newImage) {
+            document.getElementById('profileImage').src = newImage;
+        }
+
+        function restoreProfileImage() {
+            document.getElementById('profileImage').src = 'photos/user.png';
+        }
+
+        function changePassword() {
+            window.location.href = 'ZmianaHasla.html';
+        }
+
+        window.onload = function () {
+            document.body.classList.add('opadanie');
+        };
+    </script>
+</body>
+
+</html>

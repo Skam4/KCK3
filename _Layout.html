@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyYqB8F/uUGlQ6UJ/6Z/hRTt8+pR6L4N2" crossorigin="anonymous">
+    <style>
+
+        .header {
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            padding: 1em;
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .header-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body style="height: 0%">
+    <header class="header">
+        <div class="header-buttons">
+            <button onclick="goBack()">Powrót do menu</button>
+            <button onclick="logout()">Wyloguj</button>
+        </div>
+    </header>
+
+    <script>
+        window.onload = function () {
+            document.body.classList.add('opadanie');
+        };
+
+        function goBack() {
+            window.location.href = 'WyborGalerii.html';
+        }
+
+        function logout() {
+            window.location.href = 'Logowanie.html';
+        }
+    </script>
+</body>
+
+</html>

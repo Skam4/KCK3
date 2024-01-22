@@ -1,0 +1,81 @@
+body {
+    background-image: url(../photos/Tlo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    transform: translateY(0);
+    transition: transform 1s ease;
+}
+
+    body.opadanie {
+        transform: translateY(20px);
+    }
+
+h1,
+p {
+    opacity: 0;
+    animation: fade-in 1s ease-in-out 1s forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header h1 {
+    font-size: 4em;
+    font-weight: 600;
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+img {
+    max-width: 10em;
+    height: auto;
+    border-radius: 50%;
+    margin: 3em;
+}
+
+.image-container {
+    text-align: center;
+    margin-top: 8em;
+    position: relative;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+    .image-container img {
+        transition: transform 0.3s, filter 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+        .image-container img:hover {
+            transform: scale(1.1);
+            filter: brightness(105%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+.image-overlay {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-container:hover .image-overlay {
+    opacity: 1;
+}

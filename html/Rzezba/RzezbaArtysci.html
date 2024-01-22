@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+
+    <head>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../../css/site.css"/>
+        <link rel="stylesheet" href="../../css/Artysci/Artysci.css" />
+        <link rel="stylesheet" href="../../css/Artysci/Rzezba.css" />
+        <link rel="stylesheet" href="../../css/header.css" />
+        
+        <style>
+
+            h1 {
+                text-align: center;
+                text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+            }
+    
+            </style>
+
+        <header class="header2" style="margin-bottom: 2em;">
+            <div class="header-buttons2">
+                <button class="button2" onclick="goBack()">Powrót do menu</button>
+                <button class="button2" onclick="logout()">Wyloguj</button>
+            </div>
+        </header>
+
+        <script>
+            window.onload = function () {
+                document.body.classList.add('opadanie');
+            };
+    
+            function goBack() {
+                window.location.href = '../../WyborGalerii.html';
+            }
+    
+            function logout() {
+                window.location.href = '../../Logowanie.html';
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <header>
+            <h1>Wybierz Artystę, którego dzieła chcesz zobaczyć:</h1>
+        </header>
+
+        <div class="image-container"> 
+
+            <a href="Artysci/Michal_Aniol.html">
+                <img src="../../photos/MichalAniol.jpg" alt="Artysta 1" data-title="Michał Anioł" />
+            </a>
+            <a href="Artysci/Auguste_Rodin.html">
+                <img src="../../photos/Auguste Rodin.jpg" alt="Artysta 2" data-title="Auguste Rodin" />
+            </a>
+            <a href="Artysci/Giovanni_Lorenzo_Bernini.html">
+                <img src="../../photos/Gian_lorenzo_bernini_portrait.jpg" alt="Artysta 3" data-title="Giovanni Lorenzo Bernini" />
+            </a>
+            <a href="Artysci/Constantin_Brancusi.html">
+                <img src="../../photos/Constantin_Brancusi.jpg" alt="Artysta 4" data-title="Constantin Brâncuși" />
+            </a>
+
+            <div class="image-overlay">
+                <p style="padding: 10px; color: #d4d4d4; font-size: 3em; text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.8);">Tekst paragrafu</p>
+            </div>
+
+        </div>
+    </body>
+
+
+</html>
+
+<script>
+    window.onload = function () {
+        document.body.classList.add('opadanie');
+
+        var images = document.querySelectorAll('.image-container img');
+        var overlay = document.querySelector('.image-overlay p');
+
+        images.forEach(function (image) {
+            image.addEventListener('mouseover', function (event) {
+                if (event.target === image) {
+                    var title = image.getAttribute('data-title');
+                    overlay.textContent = title;
+                }
+            });
+
+            image.addEventListener('mouseout', function () {
+                overlay.style.transition = 'opacity 0.3s ease-in-out';
+                overlay.style.opacity = 0;
+
+                setTimeout(function () {
+                    overlay.style.transition = 'none';
+                    overlay.style.opacity = 1;
+                }, 300);
+            });
+
+            image.addEventListener('click', function () {
+                var destination = image.parentElement.getAttribute('href');
+                window.location.href = destination;
+            });
+        });
+    };
+</script>

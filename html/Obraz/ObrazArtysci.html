@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+
+    <head>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../../css/site.css"/>
+        <link rel="stylesheet" href="../../css/Artysci/Artysci.css" />
+        <link rel="stylesheet" href="../../css/Artysci/Obraz.css" />
+        
+        <iframe src="../../_Layout.html" frameborder="0" style="height: 0em; margin: 0em; display: flex; width: 100%; height: 5em; overflow:hidden"></iframe>
+        <style>
+
+            h1 {
+                text-align: center;
+                text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+            }
+    
+            </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>Wybierz Artystę, którego dzieła chcesz zobaczyć:</h1>
+        </header>
+
+        <div class="image-container"> 
+
+            <a href="Artysci/Leonardo_da_Vinci.html">
+                <img src="../../photos/Leonardo da Vinci.jpg" alt="Artysta 1" data-title="Leonardo da Vinci" />
+            </a>
+            <a href="Artysci/Pablo_Picasso.html">
+                <img src="../../photos/pablo-picasso.jpg" alt="Artysta 2" data-title="Pablo Picasso" />
+            </a>
+            <a href="Artysci/Salvador_Dali.html">
+                <img src="../../photos/Salvador Dali.jpg" alt="Artysta 3" data-title="Salvador Dalí" />
+            </a>
+            <a href="Artysci/Vincent_van_Gogh.html">
+                <img src="../../photos/Vincent van Gogh.jpg" alt="Artysta 4" data-title="Vincent van Gogh" />
+            </a>
+
+            <div class="image-overlay">
+                <p style="padding: 10px; color: #d4d4d4; font-size: 3em; text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.8);">Tekst paragrafu</p>
+            </div>
+
+        </div>
+    </body>
+
+
+</html>
+
+<script>
+    window.onload = function () {
+        document.body.classList.add('opadanie');
+
+        var images = document.querySelectorAll('.image-container img');
+        var overlay = document.querySelector('.image-overlay p');
+
+        images.forEach(function (image) {
+            image.addEventListener('mouseover', function (event) {
+                if (event.target === image) {
+                    var title = image.getAttribute('data-title');
+                    overlay.textContent = title;
+                }
+            });
+
+            image.addEventListener('mouseout', function () {
+                overlay.style.transition = 'opacity 0.3s ease-in-out';
+                overlay.style.opacity = 0;
+
+                setTimeout(function () {
+                    overlay.style.transition = 'none';
+                    overlay.style.opacity = 1;
+                }, 300);
+            });
+
+            image.addEventListener('click', function () {
+                var destination = image.parentElement.getAttribute('href');
+                window.location.href = destination;
+            });
+        });
+    };
+</script>
